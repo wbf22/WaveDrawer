@@ -58,7 +58,14 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    void setSamples(std::vector<float> samples);
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WaveDrawerAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(WaveDrawerAudioProcessor)
+
+    void convertSamplesToAudio(float frequency);
+
+    std::vector<float> samples;
+
+    std::set<int> onNotes;
 };

@@ -12,7 +12,7 @@
 
 //==============================================================================
 WaveDrawerAudioProcessorEditor::WaveDrawerAudioProcessorEditor (WaveDrawerAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), drawWindow()
+    : AudioProcessorEditor (&p), audioProcessor (p), drawWindow(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
@@ -46,6 +46,7 @@ void WaveDrawerAudioProcessorEditor::mouseDown(const juce::MouseEvent& event)
 {
     repaint();
 }
+
 
 
 

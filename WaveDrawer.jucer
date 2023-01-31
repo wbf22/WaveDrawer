@@ -6,6 +6,8 @@
               pluginVST3Category="Generator,Instrument">
   <MAINGROUP id="wCsTKs" name="WaveDrawer">
     <GROUP id="{44A1FE59-C58E-823E-FDF4-DF89172C625A}" name="Source">
+      <FILE id="ZoPiWN" name="Note.cpp" compile="1" resource="0" file="Source/Note.cpp"/>
+      <FILE id="S9KLsO" name="Note.h" compile="0" resource="0" file="Source/Note.h"/>
       <FILE id="SwglIR" name="DrawWindow.cpp" compile="1" resource="0" file="Source/DrawWindow.cpp"/>
       <FILE id="HIigs7" name="DrawWindow.h" compile="0" resource="0" file="Source/DrawWindow.h"/>
       <FILE id="LIMfYb" name="PluginProcessor.cpp" compile="1" resource="0"

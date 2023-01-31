@@ -1,4 +1,5 @@
 #include "DrawWindow.h"
+#include "PluginProcessor.h"
 
 
 using namespace juce;
@@ -8,9 +9,9 @@ using std::to_string;
 int DrawWindow::NUM_SAMPLES = 100;
 
 
-DrawWindow::DrawWindow() 
+DrawWindow::DrawWindow(WaveDrawerAudioProcessor& p) 
+    : audioProcessor(p)
 {
-    
     samples = std::vector<float>();
     for (int i = 0; i < NUM_SAMPLES; i++) {
         samples.push_back(0);
@@ -59,6 +60,7 @@ void DrawWindow::mouseDrag(const MouseEvent& event)
         }
     }
 
+    audioProcessor.setSamples(samples);
     repaint();
 }
 

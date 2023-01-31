@@ -27,6 +27,7 @@ WaveDrawerAudioProcessor::WaveDrawerAudioProcessor()
                        )
 #endif
 {
+    onNotes = std::set<int>();
 }
 
 WaveDrawerAudioProcessor::~WaveDrawerAudioProcessor()
@@ -160,6 +161,7 @@ void WaveDrawerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     //}
     
     buffer.clear();
+    double sampleRate = this->getSampleRate();
 
     MidiBuffer::Iterator it(midiMessages);
     MidiMessage currentMessage;
@@ -169,6 +171,17 @@ void WaveDrawerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         juce::String des = currentMessage.getDescription();
         debug = des.toStdString();
 
+        if (currentMessage.isNoteOn()) {
+            int num = currentMessage.getNoteNumber();
+            onNotes.insert(num);
+
+        }
+        else if (currentMessage.isNoteOff()) {
+            int num = currentMessage.getNoteNumber();
+            onNotes.erase(num);
+        }
+
+        //https://www.youtube.com/watch?v=Bw_OkHNpj1M&t=6s
         
     }
 
@@ -200,6 +213,16 @@ void WaveDrawerAudioProcessor::setStateInformation (const void* data, int sizeIn
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+void WaveDrawerAudioProcessor::convertSamplesToAudio(float frequency)
+{
+
+}
+
+void WaveDrawerAudioProcessor::setSamples(std::vector<float> samples)
+{
+    this->samples = samples;
 }
 
 //==============================================================================

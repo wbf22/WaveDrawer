@@ -1,11 +1,12 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "PluginProcessor.h"
 
 class DrawWindow : public juce::Component
 {
 public:
-	DrawWindow();
+	DrawWindow(WaveDrawerAudioProcessor& p);
 	~DrawWindow();
 
 	void paint(juce::Graphics&) override;
@@ -19,6 +20,8 @@ private:
 	int debug1;
 	int debug2;
 	int debug3;
+
+	WaveDrawerAudioProcessor& audioProcessor;
 
 	void drawSamples(juce::Graphics& g);
 	int convertXToSamplePosition(int x);
